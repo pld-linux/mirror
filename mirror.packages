@@ -20,7 +20,7 @@ package=i386
 	# specify remote host, directory and ls-lR file
 	site=ftp.pld.org.pl
 	remote_dir=/stable/i386
-	ls_lR_file=ls-lR.gz
+	#ls_lR_file=ls-lR.gz
 	#
 	# specify the local directory 
 	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/i386
@@ -81,7 +81,7 @@ package=i586
 	# specify remote host, directory and ls-lR file
 	site=ftp.pld.org.pl
 	remote_dir=/stable/i586
-	ls_lR_file=ls-lR.gz
+	#ls_lR_file=ls-lR.gz
 	#
 	# specify the local directory 
 	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/i586
@@ -141,7 +141,7 @@ package=i686
 	# specify remote host, directory and ls-lR file
 	site=ftp.pld.org.pl
 	remote_dir=/stable/i686
-	ls_lR_file=ls-lR.gz
+	#ls_lR_file=ls-lR.gz
 	#
 	# specify the local directory 
 	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/i686
@@ -201,7 +201,7 @@ package=SRPMS
 	# specify remote host, directory and ls-lR file
 	site=ftp.pld.org.pl
 	remote_dir=/stable/SRPMS
-	ls_lR_file=ls-lR.gz
+	#ls_lR_file=ls-lR.gz
 	#
 	# specify the local directory 
 	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/SRPMS
