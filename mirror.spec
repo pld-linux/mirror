@@ -51,15 +51,13 @@ echo ".so mirror-master.1" > $RPM_BUILD_ROOT%{_mandir}/man1/mm.1
 install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/packages/ftp.pld.org.pl
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/mm/ftp.pld.org.pl
 
-gzip -9fn *.txt mmin mirror.nightly *.class \
-	support/cyber-patches support/lstest.pl
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz support/*.gz
+%doc *.txt mmin mirror.nightly *.class support/cyber-patches
+%doc support/lstest.pl
 %ghost /home/ftp/mirrors
 
 %dir %{_sysconfdir}/mirror
