@@ -1,18 +1,19 @@
+%include	/usr/lib/rpm/macros.perl
 Summary:	Perl program to mirror FTP sites
 Summary(pl):	Program w perlu do mirrorowania serwerów FTP
 Name:		mirror
 Version:	2.9
 Release:	3
-License:	distributable
-BuildArch:	noarch
+License:	Distributable
 Group:		Networking/Utilities
+Group(de):	Netzwerkwesen/Werkzeuge
 Group(pl):	Sieciowe/Narzêdzia
 Source0:	ftp://src.doc.ic.ac.uk/computing/archiving/mirror/%{name}-%{version}.tar.gz
-Source1:	mirror.defaults
-Source2:	mirror.mm
-Source3:	mirror.packages
-Patch:		%{name}-PLD.patch
-Requires:	perl-modules
+Source1:	%{name}.defaults
+Source2:	%{name}.mm
+Source3:	%{name}.packages
+Patch0:		%{name}-PLD.patch
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_libdir 	/usr/share
@@ -31,8 +32,7 @@ Program w perlu do mirrorowania serwerów FTP.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-install -d $RPM_BUILD_ROOT{%{_libdir}/mirror,%{_bindir},%{_mandir}/man1} \
+%{__install} -d $RPM_BUILD_ROOT{%{_libdir}/mirror,%{_bindir},%{_mandir}/man1} \
 	$RPM_BUILD_ROOT%{_sysconfdir}/mirror/{packages,mm} \
 	$RPM_BUILD_ROOT/{home/ftp/mirrors,var/log/mirror}
 
@@ -41,19 +41,18 @@ install -d $RPM_BUILD_ROOT{%{_libdir}/mirror,%{_bindir},%{_mandir}/man1} \
 	"BINDIR=$RPM_BUILD_ROOT%{_bindir}" \
 	"MANDIR=$RPM_BUILD_ROOT%{_mandir}/man1"
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/mirror
+%{__install} %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/mirror
 
-ln -sf ../../../etc/mirror/mirror.defaults $RPM_BUILD_ROOT%{_libdir}/mirror/mirror.defaults
+ln -sf ../../..%{_sysconfdir}/mirror/mirror.defaults $RPM_BUILD_ROOT%{_libdir}/mirror/mirror.defaults
 ln -sf ../../bin/mirror $RPM_BUILD_ROOT%{_libdir}/mirror/mirror.pl
 ln -sf mirror-master $RPM_BUILD_ROOT%{_bindir}/mm
 
 echo ".so mirror-master.1" > $RPM_BUILD_ROOT%{_mandir}/man1/mm.1
 
-install %{SOURCE3} $RPM_BUILD_ROOT/etc/mirror/packages/ftp.pld.org.pl
-install %{SOURCE2} $RPM_BUILD_ROOT/etc/mirror/mm/ftp.pld.org.pl
+%{__install} %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/packages/ftp.pld.org.pl
+%{__install} %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/mm/ftp.pld.org.pl
 
-gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/*  *.txt *.html mmin \
-	mirror.nightly *.class \
+gzip -9fn *.txt mmin mirror.nightly *.class \
 	support/cyber-patches support/lstest.pl
 
 %clean
@@ -65,7 +64,6 @@ rm -rf $RPM_BUILD_ROOT
 %ghost /home/ftp/mirrors
 
 %dir %{_sysconfdir}/mirror
-
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mirror/*.defaults
 
 %attr(750,root,root) %dir %{_sysconfdir}/mirror/mm
