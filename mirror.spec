@@ -2,8 +2,8 @@ Summary:	Perl program to mirror FTP sites
 Summary(pl):	Program w perlu do mirrorowania serwerów FTP
 Name:		mirror
 Version:	2.9
-Release:	2
-Copyright:	distributable
+Release:	3
+License:	distributable
 BuildArch:	noarch
 Group:		Networking/Utilities
 Group(pl):	Sieciowe/Narzêdzia
@@ -12,6 +12,7 @@ Source1:	mirror.defaults
 Source2:	mirror.mm
 Source3:	mirror.packages
 Patch:		%{name}-PLD.patch
+Requires:	perl-modules
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_libdir 	/usr/share
