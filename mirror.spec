@@ -8,8 +8,8 @@ Version:	2.9
 Release:	6
 License:	distributable
 Group:		Networking/Utilities
-Source0:	ftp://src.doc.ic.ac.uk/computing/archiving/mirror/%{name}-%{version}.tar.gz
-# Source0-md5: 55178a53c7b4253c9a396a38c5a9cb94
+Source0:	http://sunsite.org.uk/packages/mirror/%{name}-%{version}.tar.gz
+# Source0-md5:	55178a53c7b4253c9a396a38c5a9cb94
 Source1:	%{name}.defaults
 Source2:	%{name}.mm
 Source3:	%{name}.packages
