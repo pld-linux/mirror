@@ -31,7 +31,7 @@ Program w perlu do mirrorowania serwerów FTP.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__install} -d $RPM_BUILD_ROOT{%{_libdir}/mirror,%{_bindir},%{_mandir}/man1} \
+install -d $RPM_BUILD_ROOT{%{_libdir}/mirror,%{_bindir},%{_mandir}/man1} \
 	$RPM_BUILD_ROOT%{_sysconfdir}/mirror/{packages,mm} \
 	$RPM_BUILD_ROOT/{home/ftp/mirrors,var/log/mirror}
 
@@ -40,7 +40,7 @@ rm -rf $RPM_BUILD_ROOT
 	"BINDIR=$RPM_BUILD_ROOT%{_bindir}" \
 	"MANDIR=$RPM_BUILD_ROOT%{_mandir}/man1"
 
-%{__install} %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/mirror
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/mirror
 
 ln -sf ../../..%{_sysconfdir}/mirror/mirror.defaults $RPM_BUILD_ROOT%{_libdir}/mirror/mirror.defaults
 ln -sf ../../bin/mirror $RPM_BUILD_ROOT%{_libdir}/mirror/mirror.pl
@@ -48,8 +48,8 @@ ln -sf mirror-master $RPM_BUILD_ROOT%{_bindir}/mm
 
 echo ".so mirror-master.1" > $RPM_BUILD_ROOT%{_mandir}/man1/mm.1
 
-%{__install} %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/packages/ftp.pld.org.pl
-%{__install} %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/mm/ftp.pld.org.pl
+install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/packages/ftp.pld.org.pl
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/mm/ftp.pld.org.pl
 
 gzip -9fn *.txt mmin mirror.nightly *.class \
 	support/cyber-patches support/lstest.pl
