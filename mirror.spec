@@ -35,7 +35,7 @@ install -d $RPM_BUILD_ROOT{%{_libdir}/mirror,%{_bindir},%{_mandir}/man1} \
 	$RPM_BUILD_ROOT%{_sysconfdir}/mirror/{packages,mm} \
 	$RPM_BUILD_ROOT/{home/ftp/mirrors,var/log/mirror}
 
-make install \
+%{__make} install \
 	"PLDIR=$RPM_BUILD_ROOT%{_datadir}/mirror" \
 	"BINDIR=$RPM_BUILD_ROOT%{_bindir}" \
 	"MANDIR=$RPM_BUILD_ROOT%{_mandir}/man1"
