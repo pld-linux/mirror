@@ -5,7 +5,7 @@ Summary(pl):	Program w perlu do mirrorowania serwerów FTP
 Summary(pt_BR):	Programa em perl para fazer espelhos de sítios FTP
 Name:		mirror
 Version:	2.9
-Release:	6
+Release:	7
 License:	distributable
 Group:		Networking/Utilities
 Source0:	http://sunsite.org.uk/packages/mirror/%{name}-%{version}.tar.gz
