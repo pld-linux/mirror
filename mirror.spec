@@ -37,7 +37,7 @@ Program w perlu do mirrorowania serwerów FTP.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir}/mirror,%{_bindir},%{_mandir}/man1} \
 	$RPM_BUILD_ROOT%{_sysconfdir}/mirror/{packages,mm} \
-	$RPM_BUILD_ROOT/{home/ftp/mirrors,var/log/mirror}
+	$RPM_BUILD_ROOT/{home/services/ftp/mirrors,var/log/mirror}
 
 %{__make} install \
 	"PLDIR=$RPM_BUILD_ROOT%{_datadir}/mirror" \
@@ -62,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc *.txt mmin mirror.nightly *.class support/cyber-patches
 %doc support/lstest.pl
-%ghost /home/ftp/mirrors
+%ghost /home/services/ftp/mirrors
 
 %dir %{_sysconfdir}/mirror
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mirror/*.defaults

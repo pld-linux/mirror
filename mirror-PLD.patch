@@ -12,7 +12,7 @@ diff -Nur mirror-2.9/do_unlinks.pl mirror-2.9.PLD/do_unlinks.pl
  
  # A simple safety check - only delete if the pathname begins with this
 -$del_only = '/public';
-+$del_only = '/home/ftp/mirrors';
++$del_only = '/home/services/ftp/mirrors';
  
  $rm = '/bin/rm -r';
  
