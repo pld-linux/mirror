@@ -22,7 +22,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_libdir 	/usr/share
 %define		_localstatedir 	/var
-%define		_sysconfdir 	/etc
 
 %description
 Perl program to mirror FTP sites.
