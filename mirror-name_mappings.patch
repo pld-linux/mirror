@@ -1,0 +1,11 @@
+--- mirror-2.9/mirror.defaults~	Wed Nov 13 10:31:06 2002
++++ mirror-2.9/mirror.defaults	Wed Nov 13 10:31:06 2002
+@@ -7,6 +7,8 @@
+ # You should be able to use this at other sites.  You should only have
+ # to change bits that reference my site (sunsite).
+ 
++name_mappings=s:\.\./:__/:g
++
+ package=defaults
+ 	# The LOCAL hostname - if not the same as `hostname`
+ 	# (I advertise the name sunsite.org.uk but the machine is
