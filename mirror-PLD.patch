@@ -1,0 +1,89 @@
+diff -Nur mirror-2.9/do_unlinks.pl mirror-2.9.PLD/do_unlinks.pl
+--- mirror-2.9/do_unlinks.pl	Wed Feb  4 00:01:13 1998
++++ mirror-2.9.PLD/do_unlinks.pl	Thu Jul  8 18:22:15 1999
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl -s
++#!/usr/bin/perl -s
+ #
+ #
+ #
+@@ -31,7 +31,7 @@
+ #       an entire directory tree
+ 
+ # A simple safety check - only delete if the pathname begins with this
+-$del_only = '/public';
++$del_only = '/home/ftp/mirrors';
+ 
+ $rm = '/bin/rm -r';
+ 
+diff -Nur mirror-2.9/makefile mirror-2.9.PLD/makefile
+--- mirror-2.9/makefile	Mon Jun  1 20:28:47 1998
++++ mirror-2.9.PLD/makefile	Thu Jul  8 18:28:54 1999
+@@ -67,23 +67,23 @@
+ # group to own all the files
+ GRP = gnu
+ # directory to install .pl (perl library) files
+-PLDIR = /usr/local/perl5/lib/perl5
++PLDIR = /usr/share/mirror
+ # directory to install public executables
+-BINDIR = /usr/local/sbin
++BINDIR = /usr/bin
+ # directory to install man pages
+-MANDIR = /usr/local/man/man1
++MANDIR = /usr/share/man/man1
+ 
+ install:
+-	install -m $(PLMODE) -g $(GRP) lchat.pl $(PLDIR)
+-	install -m $(PLMODE) -g $(GRP) dateconv.pl $(PLDIR)
+-	install -m $(PLMODE) -g $(GRP) ftp.pl $(PLDIR)
+-	install -m $(PLMODE) -g $(GRP) lsparse.pl $(PLDIR)
+-	install -m $(EXMODE) -g $(GRP) mirror.pl $(BINDIR)/mirror
+-	install -m $(EXMODE) -g $(GRP) do_unlinks.pl $(BINDIR)/do_unlinks
+-	install -m $(EXMODE) -g $(GRP) pkgs_to_mmin.pl $(BINDIR)/pkgs_to_mmin
+-	install -m $(EXMODE) -g $(GRP) mm.pl $(BINDIR)/mirror-master
+-	install -m $(PLMODE) -g $(GRP) mirror.man $(MANDIR)/mirror.1
+-	install -m $(PLMODE) -g $(GRP) mm.man $(MANDIR)/mirror-master.1
++	install -m $(PLMODE) lchat.pl $(PLDIR)
++	install -m $(PLMODE) dateconv.pl $(PLDIR)
++	install -m $(PLMODE) ftp.pl $(PLDIR)
++	install -m $(PLMODE) lsparse.pl $(PLDIR)
++	install -m $(EXMODE) mirror.pl $(BINDIR)/mirror
++	install -m $(EXMODE) do_unlinks.pl $(BINDIR)/do_unlinks
++	install -m $(EXMODE) pkgs_to_mmin.pl $(BINDIR)/pkgs_to_mmin
++	install -m $(EXMODE) mm.pl $(BINDIR)/mirror-master
++	install -m $(PLMODE) mirror.man $(MANDIR)/mirror.1
++	install -m $(PLMODE) mm.man $(MANDIR)/mirror-master.1
+ 
+ # directory to install .pl (perl library) files for rperl
+ RPLDIR = /usr/local/rperl5/lib/perl5
+diff -Nur mirror-2.9/mirror.pl mirror-2.9.PLD/mirror.pl
+--- mirror-2.9/mirror.pl	Mon Jun  8 12:55:27 1998
++++ mirror-2.9.PLD/mirror.pl	Thu Jul  8 18:29:43 1999
+@@ -104,7 +104,7 @@
+ # Try to find the default location of various programs via
+ # the users PATH then using $extra_path
+ if( ! $on_win ){
+-	$extra_path = '/usr/local/bin:/usr/new/bin:/usr/public/bin:/usr/ucb:/usr/bin:/bin:/etc:/usr/etc:/usr/local/etc';
++	$extra_path = '/bin:/usr/bin:/usr/share/mirror:/etc/mirror/packages:/etc/mirror/mm:/etc';
+ }
+ if( $extra_path ne '' ){
+ 	$ENV{ 'PATH' } .= $path_sep . $extra_path;
+@@ -169,6 +169,9 @@
+ # When scanning the local directory, how often to prod the remote
+ # system to keep the connection alive
+ $prod_interval = 60;
++
++# For PLD mirror
++unshift( @INC, "/usr/share/mirror" );
+ 
+ # Put the directory that mirror is actually in at the start of PERLLIB.
+ $dir = &real_dir_from_path( $0 );
+diff -Nur mirror-2.9/support/lstest.pl mirror-2.9.PLD/support/lstest.pl
+--- mirror-2.9/support/lstest.pl	Fri May 23 19:57:13 1997
++++ mirror-2.9.PLD/support/lstest.pl	Thu Jul  8 18:22:15 1999
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl -s
++#!/usr/bin/perl -s
+ 
+ unshift( @INC, '.' );
+ unshift( @INC, '..' );

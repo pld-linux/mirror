@@ -1,0 +1,256 @@
+#
+# This serves as an illustration for a valid mirror parameter file. See the
+# man page mirror(1) and the files in /usr/doc/mirror*/* for details.
+#
+# It is good practice to test modifications by starting mirror(1) with 
+# the '-n' flag as in 
+#	mirror -n /etc/mirror/packages/ftp.pld.org.pl | tee /tmp/mirror-log
+# and to analyses mirror-log.
+#
+# It worked for me at the time that I wrote it, but it might fail for you. 
+# No warranties whatsoever. Use at your own risk. 
+#
+# Written by Dirk Eddelbuettel <edd@debian.org> and released under the GPL.
+# Modified for PLD by Arkadiusz Mi¶kiewicz <misiek@debian.eu.org>.
+#
+package=i386
+	#
+	comment=Mirror PLD z ftp.pld.org.pl/stable/i386
+	#	
+	# specify remote host, directory and ls-lR file
+	site=ftp.pld.org.pl
+	remote_dir=/stable/i386
+	ls_lR_file=ls-lR.gz
+	#
+	# specify the local directory 
+	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/i386
+	#
+	# inform this user about results
+	mail_to=root
+	#
+	# Now the nifty perl regular expressions. The '(A|B|C)' construct
+	# describes alternatives A, B and C. As '.' is a meta character that
+	# matches any character, we have to escape with \ in pathnames.
+	# See "man perlre" for information on perl's regular expressions.
+	# Compress these files.
+	compress_patt=\.*(C|c)ontents(-i586)?
+	compress_patt+|Packages(-Master)?|ls-lR|md5sums
+	compress_patt+|Maintainers|msdos-names
+	#
+	# Exclude these files or directories 
+	# Here we exclude the released tree, all ms-dos symlinks, all source
+	# packages, the private tree (but see below) and the bug tree
+	exclude_patt=.*(-|_)m68k|ms-?dos(-i586)?/|source/|private/
+	exclude_patt+|debian-(bugs|lists)/
+	exclude_patt+|(binary|disks)-(alpha|sparc|m68k|powerpc)/
+	exclude_patt+|i-connect-fixes/|ALPHA-TEST/|/core$|(I|i)ncoming/
+	exclude_patt+|WebPages/|\.contents\.new|\.in\.|\.new-?|\.mirrorinfo
+	exclude_patt+|Packages(-Master)?-(alpha|powerpc|sparc)
+	#
+	# Also exclude these.
+	exclude_patt+|experimental/.*(\.(tar|diff)\.gz|\.dsc)$
+	exclude_patt+|experimental/.*_(m68k|sparc|alpha|powerpc)\.deb$
+	exclude_patt+|orphaned/.*(\.(tar|diff)\.gz|\.m68k\.deb|\.dsc)$
+	exclude_patt+|rex(-(fixed|updates))?/
+	exclude_patt+|bo/
+	exclude_patt+|bo-updates/.*(\.changes|((\.orig)?\.tar|diff)\.gz|\.dsc)
+	#	
+	exclude_patt+|\.notar
+	#
+	# Uncomment the following lines to exclude BIG packages
+	# exclude_patt+|experimental/|disks-i586/
+	# exclude_patt+|xbooks_.*|picon.*|timidity.*|quake.*
+	# exclude_patt+|bible-kjv.*|abuse.*|scilab.*|networker.*
+	# exclude_patt+gnat_.*|xemacs.*|non-free/|contrib/
+	#
+	# Don't delete what is mirrored by the other mirror package below
+	# NB no / at end of directory names to save directories from deletion
+	# also save private/project directory (which contains Incoming)
+	#
+	delete_excl=(local|cryptographic)(/|$)
+	#
+	# Do not delete if more than 20% of all files would vanish
+	max_delete_files=20%
+	do_deletes=true
+
+
+package=i586
+	#
+	comment=Mirror PLD z ftp.pld.org.pl/stable/i586
+	#	
+	# specify remote host, directory and ls-lR file
+	site=ftp.pld.org.pl
+	remote_dir=/stable/i586
+	ls_lR_file=ls-lR.gz
+	#
+	# specify the local directory 
+	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/i586
+	#
+	# inform this user about results
+	mail_to=root
+	#
+	# Now the nifty perl regular expressions. The '(A|B|C)' construct
+	# describes alternatives A, B and C. As '.' is a meta character that
+	# matches any character, we have to escape with \ in pathnames.
+	# See "man perlre" for information on perl's regular expressions.
+	# Compress these files.
+	compress_patt=\.*(C|c)ontents(-i586)?
+	compress_patt+|Packages(-Master)?|ls-lR|md5sums
+	compress_patt+|Maintainers|msdos-names
+	#
+	# Exclude these files or directories 
+	# Here we exclude the released tree, all ms-dos symlinks, all source
+	# packages, the private tree (but see below) and the bug tree
+	exclude_patt=.*(-|_)m68k|ms-?dos(-i586)?/|source/|private/
+	exclude_patt+|debian-(bugs|lists)/
+	exclude_patt+|(binary|disks)-(alpha|sparc|m68k|powerpc)/
+	exclude_patt+|i-connect-fixes/|ALPHA-TEST/|/core$|(I|i)ncoming/
+	exclude_patt+|WebPages/|\.contents\.new|\.in\.|\.new-?|\.mirrorinfo
+	exclude_patt+|Packages(-Master)?-(alpha|powerpc|sparc)
+	#
+	# Also exclude these.
+	exclude_patt+|experimental/.*(\.(tar|diff)\.gz|\.dsc)$
+	exclude_patt+|experimental/.*_(m68k|sparc|alpha|powerpc)\.deb$
+	exclude_patt+|orphaned/.*(\.(tar|diff)\.gz|\.m68k\.deb|\.dsc)$
+	exclude_patt+|rex(-(fixed|updates))?/
+	exclude_patt+|bo/
+	exclude_patt+|bo-updates/.*(\.changes|((\.orig)?\.tar|diff)\.gz|\.dsc)
+	#	
+	exclude_patt+|\.notar
+	#
+	# Uncomment the following lines to exclude BIG packages
+	# exclude_patt+|experimental/|disks-i586/
+	# exclude_patt+|xbooks_.*|picon.*|timidity.*|quake.*
+	# exclude_patt+|bible-kjv.*|abuse.*|scilab.*|networker.*
+	# exclude_patt+gnat_.*|xemacs.*|non-free/|contrib/
+	#
+	# Don't delete what is mirrored by the other mirror package below
+	# NB no / at end of directory names to save directories from deletion
+	# also save private/project directory (which contains Incoming)
+	#
+	delete_excl=(local|cryptographic)(/|$)
+	#
+	# Do not delete if more than 20% of all files would vanish
+	max_delete_files=20%
+	do_deletes=true
+
+package=i686
+	#
+	comment=Mirror PLD z ftp.pld.org.pl/stable/i686
+	#	
+	# specify remote host, directory and ls-lR file
+	site=ftp.pld.org.pl
+	remote_dir=/stable/i686
+	ls_lR_file=ls-lR.gz
+	#
+	# specify the local directory 
+	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/i686
+	#
+	# inform this user about results
+	mail_to=root
+	#
+	# Now the nifty perl regular expressions. The '(A|B|C)' construct
+	# describes alternatives A, B and C. As '.' is a meta character that
+	# matches any character, we have to escape with \ in pathnames.
+	# See "man perlre" for information on perl's regular expressions.
+	# Compress these files.
+	compress_patt=\.*(C|c)ontents(-i586)?
+	compress_patt+|Packages(-Master)?|ls-lR|md5sums
+	compress_patt+|Maintainers|msdos-names
+	#
+	# Exclude these files or directories 
+	# Here we exclude the released tree, all ms-dos symlinks, all source
+	# packages, the private tree (but see below) and the bug tree
+	exclude_patt=.*(-|_)m68k|ms-?dos(-i586)?/|source/|private/
+	exclude_patt+|debian-(bugs|lists)/
+	exclude_patt+|(binary|disks)-(alpha|sparc|m68k|powerpc)/
+	exclude_patt+|i-connect-fixes/|ALPHA-TEST/|/core$|(I|i)ncoming/
+	exclude_patt+|WebPages/|\.contents\.new|\.in\.|\.new-?|\.mirrorinfo
+	exclude_patt+|Packages(-Master)?-(alpha|powerpc|sparc)
+	#
+	# Also exclude these.
+	exclude_patt+|experimental/.*(\.(tar|diff)\.gz|\.dsc)$
+	exclude_patt+|experimental/.*_(m68k|sparc|alpha|powerpc)\.deb$
+	exclude_patt+|orphaned/.*(\.(tar|diff)\.gz|\.m68k\.deb|\.dsc)$
+	exclude_patt+|rex(-(fixed|updates))?/
+	exclude_patt+|bo/
+	exclude_patt+|bo-updates/.*(\.changes|((\.orig)?\.tar|diff)\.gz|\.dsc)
+	#	
+	exclude_patt+|\.notar
+	#
+	# Uncomment the following lines to exclude BIG packages
+	# exclude_patt+|experimental/|disks-i586/
+	# exclude_patt+|xbooks_.*|picon.*|timidity.*|quake.*
+	# exclude_patt+|bible-kjv.*|abuse.*|scilab.*|networker.*
+	# exclude_patt+gnat_.*|xemacs.*|non-free/|contrib/
+	#
+	# Don't delete what is mirrored by the other mirror package below
+	# NB no / at end of directory names to save directories from deletion
+	# also save private/project directory (which contains Incoming)
+	#
+	delete_excl=(local|cryptographic)(/|$)
+	#
+	# Do not delete if more than 20% of all files would vanish
+	max_delete_files=20%
+	do_deletes=true
+
+package=SRPMS
+	#
+	comment=Mirror PLD z ftp.pld.org.pl/stable/SRPMS
+	#	
+	# specify remote host, directory and ls-lR file
+	site=ftp.pld.org.pl
+	remote_dir=/stable/SRPMS
+	ls_lR_file=ls-lR.gz
+	#
+	# specify the local directory 
+	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/SRPMS
+	#
+	# inform this user about results
+	mail_to=root
+	#
+	# Now the nifty perl regular expressions. The '(A|B|C)' construct
+	# describes alternatives A, B and C. As '.' is a meta character that
+	# matches any character, we have to escape with \ in pathnames.
+	# See "man perlre" for information on perl's regular expressions.
+	# Compress these files.
+	compress_patt=\.*(C|c)ontents(-i586)?
+	compress_patt+|Packages(-Master)?|ls-lR|md5sums
+	compress_patt+|Maintainers|msdos-names
+	#
+	# Exclude these files or directories 
+	# Here we exclude the released tree, all ms-dos symlinks, all source
+	# packages, the private tree (but see below) and the bug tree
+	exclude_patt=.*(-|_)m68k|ms-?dos(-i586)?/|source/|private/
+	exclude_patt+|debian-(bugs|lists)/
+	exclude_patt+|(binary|disks)-(alpha|sparc|m68k|powerpc)/
+	exclude_patt+|i-connect-fixes/|ALPHA-TEST/|/core$|(I|i)ncoming/
+	exclude_patt+|WebPages/|\.contents\.new|\.in\.|\.new-?|\.mirrorinfo
+	exclude_patt+|Packages(-Master)?-(alpha|powerpc|sparc)
+	#
+	# Also exclude these.
+	exclude_patt+|experimental/.*(\.(tar|diff)\.gz|\.dsc)$
+	exclude_patt+|experimental/.*_(m68k|sparc|alpha|powerpc)\.deb$
+	exclude_patt+|orphaned/.*(\.(tar|diff)\.gz|\.m68k\.deb|\.dsc)$
+	exclude_patt+|rex(-(fixed|updates))?/
+	exclude_patt+|bo/
+	exclude_patt+|bo-updates/.*(\.changes|((\.orig)?\.tar|diff)\.gz|\.dsc)
+	#	
+	exclude_patt+|\.notar
+	#
+	# Uncomment the following lines to exclude BIG packages
+	# exclude_patt+|experimental/|disks-i586/
+	# exclude_patt+|xbooks_.*|picon.*|timidity.*|quake.*
+	# exclude_patt+|bible-kjv.*|abuse.*|scilab.*|networker.*
+	# exclude_patt+gnat_.*|xemacs.*|non-free/|contrib/
+	#
+	# Don't delete what is mirrored by the other mirror package below
+	# NB no / at end of directory names to save directories from deletion
+	# also save private/project directory (which contains Incoming)
+	#
+	delete_excl=(local|cryptographic)(/|$)
+	#
+	# Do not delete if more than 20% of all files would vanish
+	max_delete_files=20%
+	do_deletes=true
+
