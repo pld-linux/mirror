@@ -12,7 +12,7 @@ Source1:	mirror.defaults
 Source2:	mirror.mm
 Source3:	mirror.packages
 Patch:		%{name}-PLD.patch
-BuildRoot:	/tmp/%{name}-%{version}-buildroot
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_libdir 	/usr/share
 %define		_localstatedir 	/var
@@ -50,7 +50,6 @@ echo ".so mirror-master.1" > $RPM_BUILD_ROOT%{_mandir}/man1/mm.1
 
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/mirror/packages/ftp.pld.org.pl
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/mirror/mm/ftp.pld.org.pl
-
 
 gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man1/*  *.txt *.html mmin \
 	mirror.nightly *.class \
