@@ -60,8 +60,8 @@ ln -sf mirror-master $RPM_BUILD_ROOT%{_bindir}/mm
 
 echo ".so mirror-master.1" > $RPM_BUILD_ROOT%{_mandir}/man1/mm.1
 
-install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/packages/ftp.pld.org.pl
-install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/mm/ftp.pld.org.pl
+install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/packages/ftp.pld-linux.org
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/mirror/mm/ftp.pld-linux.org
 
 %clean
 rm -rf $RPM_BUILD_ROOT
