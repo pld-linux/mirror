@@ -22,6 +22,9 @@ package=i386
 	remote_dir=/stable/i386
 	#ls_lR_file=ls-lR.gz
 	#
+	# We assume that remote host time-stamps files to GMT
+	use_timelocal=false
+	#
 	# specify the local directory 
 	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/i386
 	#
@@ -83,6 +86,9 @@ package=i586
 	remote_dir=/stable/i586
 	#ls_lR_file=ls-lR.gz
 	#
+	# We assume that remote host time-stamps files to GMT
+	use_timelocal=false
+	#
 	# specify the local directory 
 	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/i586
 	#
@@ -143,6 +149,9 @@ package=i686
 	remote_dir=/stable/i686
 	#ls_lR_file=ls-lR.gz
 	#
+	# We assume that remote host time-stamps files to GMT
+	use_timelocal=false
+	#
 	# specify the local directory 
 	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/i686
 	#
@@ -202,6 +211,9 @@ package=SRPMS
 	site=ftp.pld.org.pl
 	remote_dir=/stable/SRPMS
 	#ls_lR_file=ls-lR.gz
+	#
+	# We assume that remote host time-stamps files to GMT
+	use_timelocal=false
 	#
 	# specify the local directory 
 	local_dir=/home/ftp/mirrors/ftp.pld.org.pl/stable/SRPMS
