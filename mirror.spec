@@ -4,7 +4,7 @@ Summary(pl):	Program w perlu do mirrorowania serwerów FTP
 Name:		mirror
 Version:	2.9
 Release:	4
-License:	Distributable
+License:	distributable
 Group:		Networking/Utilities
 Group(de):	Netzwerkwesen/Werkzeuge
 Group(pl):	Sieciowe/Narzêdzia
