@@ -4,7 +4,7 @@
 #
 # It is good practice to test modifications by starting mirror(1) with 
 # the '-n' flag as in 
-#	mirror -n /etc/mirror/packages/ftp.pld.org.pl | tee /tmp/mirror-log
+#	mirror -n /etc/mirror/packages/ftp.pld-linux.org | tee /tmp/mirror-log
 # and to analyses mirror-log.
 #
 # It worked for me at the time that I wrote it, but it might fail for you. 
@@ -15,18 +15,18 @@
 #
 package=i386
 	#
-	comment=Mirror PLD z ftp.pld.org.pl/stable/i386
+	comment=Mirror PLD z ftp.pld-linux.org/dists/ra/PLD/i386
 	#	
 	# specify remote host, directory and ls-lR file
-	site=ftp.pld.org.pl
-	remote_dir=/stable/i386
+	site=ftp.pld-linux.org
+	remote_dir=/dists/ra/PLD/i386
 	#ls_lR_file=ls-lR.gz
 	#
 	# We assume that remote host time-stamps files to GMT
 	use_timelocal=false
 	#
 	# specify the local directory 
-	local_dir=/home/services/ftp/mirrors/ftp.pld.org.pl/stable/i386
+	local_dir=/home/services/ftp/mirrors/ftp.pld-linux.org/dists/ra/PLD/i386
 	#
 	# inform this user about results
 	mail_to=root
@@ -79,18 +79,18 @@ package=i386
 
 package=i586
 	#
-	comment=Mirror PLD z ftp.pld.org.pl/stable/i586
+	comment=Mirror PLD z ftp.pld-linux.org/dists/ra/PLD/i586
 	#	
 	# specify remote host, directory and ls-lR file
-	site=ftp.pld.org.pl
-	remote_dir=/stable/i586
+	site=ftp.pld-linux.org
+	remote_dir=/dists/ra/PLD/i586
 	#ls_lR_file=ls-lR.gz
 	#
 	# We assume that remote host time-stamps files to GMT
 	use_timelocal=false
 	#
 	# specify the local directory 
-	local_dir=/home/services/ftp/mirrors/ftp.pld.org.pl/stable/i586
+	local_dir=/home/services/ftp/mirrors/ftp.pld-linux.org/dists/ra/PLD/i586
 	#
 	# inform this user about results
 	mail_to=root
@@ -142,18 +142,18 @@ package=i586
 
 package=i686
 	#
-	comment=Mirror PLD z ftp.pld.org.pl/stable/i686
+	comment=Mirror PLD z ftp.pld-linux.org/dists/ra/PLD/i686
 	#	
 	# specify remote host, directory and ls-lR file
-	site=ftp.pld.org.pl
-	remote_dir=/stable/i686
+	site=ftp.pld-linux.org
+	remote_dir=/dists/ra/PLD/i686
 	#ls_lR_file=ls-lR.gz
 	#
 	# We assume that remote host time-stamps files to GMT
 	use_timelocal=false
 	#
 	# specify the local directory 
-	local_dir=/home/services/ftp/mirrors/ftp.pld.org.pl/stable/i686
+	local_dir=/home/services/ftp/mirrors/ftp.pld-linux.org/dists/ra/PLD/i686
 	#
 	# inform this user about results
 	mail_to=root
@@ -205,18 +205,18 @@ package=i686
 
 package=SRPMS
 	#
-	comment=Mirror PLD z ftp.pld.org.pl/stable/SRPMS
+	comment=Mirror PLD z ftp.pld-linux.org/dists/ra/PLD/SRPMS
 	#	
 	# specify remote host, directory and ls-lR file
-	site=ftp.pld.org.pl
-	remote_dir=/stable/SRPMS
+	site=ftp.pld-linux.org
+	remote_dir=/dists/ra/PLD/SRPMS
 	#ls_lR_file=ls-lR.gz
 	#
 	# We assume that remote host time-stamps files to GMT
 	use_timelocal=false
 	#
 	# specify the local directory 
-	local_dir=/home/services/ftp/mirrors/ftp.pld.org.pl/stable/SRPMS
+	local_dir=/home/services/ftp/mirrors/ftp.pld-linux.org/dists/ra/PLD/SRPMS
 	#
 	# inform this user about results
 	mail_to=root

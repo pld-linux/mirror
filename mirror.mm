@@ -18,10 +18,10 @@ home=/var/log/mirror
 mirror=/usr/bin/mirror -p$package /etc/mirror/packages/$site >$site:$package
 
 # mirror these if last (successful) mirroring was at least 20h ago
-ftp.pld.org.pl:i386 20 0
-ftp.pld.org.pl:i586 20 0
-ftp.pld.org.pl:i686 20 0
-ftp.pld.org.pl:SRPMS 20 0
+ftp.pld-linux.org:i386 20 0
+ftp.pld-linux.org:i586 20 0
+ftp.pld-linux.org:i686 20 0
+ftp.pld-linux.org:SRPMS 20 0
 
-# When mirror-master stops, the file /var/log/mirror/ftp.ps.pl:PLD
+# When mirror-master stops, the file /var/log/mirror/ftp.pld-linux.org
 # lists the mirror results for the above example. 
