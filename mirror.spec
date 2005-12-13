@@ -73,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %ghost /home/services/ftp/mirrors
 
 %dir %{_sysconfdir}/mirror
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/mirror/*.defaults
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/mirror/*.defaults
 
 %attr(750,root,root) %dir %{_sysconfdir}/mirror/mm
 %attr(640,root,root) %{_sysconfdir}/mirror/mm/*
