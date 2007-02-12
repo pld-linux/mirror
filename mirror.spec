@@ -1,8 +1,8 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Perl program to mirror FTP sites
-Summary(es):	Programa Perl para hacer espejos de sitios FTP
-Summary(pl):	Program w Perlu do mirrorowania serwerów FTP
-Summary(pt_BR):	Programa em Perl para fazer espelhos de sítios FTP
+Summary(es.UTF-8):   Programa Perl para hacer espejos de sitios FTP
+Summary(pl.UTF-8):   Program w Perlu do mirrorowania serwerÃ³w FTP
+Summary(pt_BR.UTF-8):   Programa em Perl para fazer espelhos de sÃ­tios FTP
 Name:		mirror
 Version:	2.9
 Release:	7
@@ -26,14 +26,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Perl program to mirror FTP sites.
 
-%description -l es
+%description -l es.UTF-8
 Programa Perl para hacer espejos de sitios FTP
 
-%description -l pl
-Program w Perlu do mirrorowania serwerów FTP.
+%description -l pl.UTF-8
+Program w Perlu do mirrorowania serwerÃ³w FTP.
 
-%description -l pt_BR
-Programa em Perl para fazer espelhos de sítios FTP
+%description -l pt_BR.UTF-8
+Programa em Perl para fazer espelhos de sÃ­tios FTP
 
 %prep
 %setup -q -c
